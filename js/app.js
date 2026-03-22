@@ -8,7 +8,13 @@ const ARTWORK_OVERRIDES = {
 };
 
 // Initialize Application
-document.addEventListener('DOMContentLoaded', () => {
+function initMainContent() {
+    const header = document.querySelector('.navbar');
+    const hero = document.querySelector('.hero');
+
+    // update header state, lazy event listeners etc. (if needed)
+    if (hero) hero.classList.add('hero-loaded');
+
     const reviewsContainer = document.getElementById('reviewsContainer');
     if (reviewsContainer) loadMusicboardReviews(reviewsContainer);
 
@@ -21,35 +27,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const lastfmContainer = document.getElementById('lastfmContainer');
     const lastfmTopAlbumsContainer = document.getElementById('lastfmTopAlbums');
     const lastfmTopTracksContainer = document.getElementById('lastfmTopTracks');
-    
     const userBtn = document.getElementById('updateUserBtn');
     const userInput = document.getElementById('lastfmUser');
-    
+
     if (lastfmContainer || lastfmTopAlbumsContainer || lastfmTopTracksContainer) {
         const defaultUser = userInput ? userInput.value.trim() : 'predragkon';
         fetchAllLastfmData(defaultUser, lastfmContainer, lastfmTopAlbumsContainer, lastfmTopTracksContainer);
 
         if (userBtn && userInput) {
-            userBtn.addEventListener('click', () => {
+            const updateFn = () => {
                 const newUser = userInput.value.trim();
                 if (newUser) fetchAllLastfmData(newUser, lastfmContainer, lastfmTopAlbumsContainer, lastfmTopTracksContainer);
-            });
+            };
 
+            userBtn.addEventListener('click', updateFn);
             userInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const newUser = userInput.value.trim();
-                    if (newUser) fetchAllLastfmData(newUser, lastfmContainer, lastfmTopAlbumsContainer, lastfmTopTracksContainer);
-                }
+                if (e.key === 'Enter') updateFn();
             });
         }
     }
-});
+}
+
+function scheduleDeferredLoad() {
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initMainContent, { timeout: 500 });
+    } else {
+        setTimeout(initMainContent, 200);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', scheduleDeferredLoad);
 
 async function loadMusicboardReviews(container) {
     container.innerHTML = `<div class="loading-state">Povlačenje Musicboard recenzija i Last.fm omota albuma za korisnika @${MUSICBOARD_USERNAME}...</div>`;
     try {
-        await new Promise(resolve => setTimeout(resolve, 800));
-        const response = await fetch('./data/musicboard_reviews.json?v=' + new Date().getTime());
+        await new Promise(resolve => setTimeout(resolve, 300));
+        const response = await fetch('./data/musicboard_reviews.json', { cache: 'force-cache' });
         if (!response.ok) throw new Error('Neuspelo povlačenje Musicboard podataka');
         const reviews = await response.json();
         
@@ -57,27 +70,15 @@ async function loadMusicboardReviews(container) {
         
         for (const review of reviews) {
             let coverUrl = review.coverUrl;
-            
+
             if (ARTWORK_OVERRIDES[review.album.toLowerCase()]) {
                 coverUrl = ARTWORK_OVERRIDES[review.album.toLowerCase()];
-            } else {
-                try {
-                    const lfUrl = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${API_KEY}&artist=${encodeURIComponent(review.artist)}&album=${encodeURIComponent(review.album)}&format=json`;
-                    const lfRes = await fetch(lfUrl);
-                    const lfData = await lfRes.json();
-                    if (lfData && lfData.album && lfData.album.image) {
-                        const imgObj = lfData.album.image.find(img => img.size === 'extralarge') || lfData.album.image[lfData.album.image.length - 1];
-                        if (imgObj && imgObj['#text']) coverUrl = imgObj['#text'];
-                    }
-                } catch (err) {
-                    console.warn('Could not fetch album cover for', review.album);
-                }
             }
 
             const card = document.createElement('article');
             card.className = 'card';
             card.innerHTML = `
-                <img src="${coverUrl}" alt="${review.album} Omot" class="card-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
+                <img src="${coverUrl}" alt="${review.album} Omot" class="card-img" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
                 <div class="card-content">
                     <h3 class="card-title">${review.album}</h3>
                     <div class="card-subtitle">${review.artist}</div>
@@ -98,7 +99,7 @@ async function loadMusicboardReviews(container) {
 
 async function loadGenres(container) {
     try {
-        const response = await fetch('./data/genres.json?v=' + new Date().getTime());
+        const response = await fetch('./data/genres.json', { cache: 'force-cache' });
         if (!response.ok) throw new Error('Neuspelo učitavanje žanrova');
         const genres = await response.json();
         
@@ -132,7 +133,7 @@ async function loadGenreDetails(container) {
     }
 
     try {
-        const response = await fetch('./data/genres.json?v=' + new Date().getTime());
+        const response = await fetch('./data/genres.json', { cache: 'force-cache' });
         const genres = await response.json();
         const genre = genres.find(g => g.slug === genreId);
 
@@ -252,7 +253,7 @@ async function fetchLastfmRecentTracks(user, container) {
             const trackEl = document.createElement('div');
             trackEl.className = 'track-item';
             trackEl.innerHTML = `
-                ${imageUrl ? `<img src="${imageUrl}" alt="Album Art" class="track-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>` : `<div class="track-img"></div>`}
+                ${imageUrl ? `<img src="${imageUrl}" alt="Album Art" class="track-img" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>` : `<div class="track-img"></div>`}
                 <div class="track-info">
                     <div class="track-name">${trackName}</div>
                     <div class="track-artist">${artistName}</div>
@@ -300,7 +301,7 @@ async function fetchLastfmTopAlbums(user, container) {
             const card = document.createElement('article');
             card.className = 'card';
             card.innerHTML = `
-                <img src="${imageUrl}" alt="Album Art" class="card-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
+                <img src="${imageUrl}" alt="Album Art" class="card-img" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
                 <div class="card-content">
                     <h3 class="card-title">${albumName}</h3>
                     <div class="card-subtitle">${artistName}</div>
@@ -346,33 +347,17 @@ async function fetchLastfmTopTracks(user, container) {
             
             if (ARTWORK_OVERRIDES[trackName.toLowerCase()]) {
                 imageUrl = ARTWORK_OVERRIDES[trackName.toLowerCase()];
+            } else if (track.image && track.image.length > 0) {
+                const imageObj = track.image.find(img => img.size === 'extralarge') || track.image[track.image.length - 1];
+                imageUrl = imageObj['#text'] || '';
             } else {
-                try {
-                    const trUrl = `https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=${API_KEY}&artist=${encodeURIComponent(artistName)}&track=${encodeURIComponent(trackName)}&format=json`;
-                    const trRes = await fetch(trUrl);
-                    const trData = await trRes.json();
-                    if (trData && trData.track && trData.track.album && trData.track.album.image) {
-                        const imgObj = trData.track.album.image.find(img => img.size === 'extralarge') || trData.track.album.image[trData.track.album.image.length - 1];
-                        if (imgObj && imgObj['#text']) imageUrl = imgObj['#text'];
-                    }
-                } catch (err) {
-                    console.warn('Could not fetch detailed track cover for', trackName);
-                }
-                
-                if (!imageUrl) {
-                    if (track.image && track.image.length > 0 && track.image[0]['#text']) {
-                        const imageObj = track.image.find(img => img.size === 'extralarge') || track.image[track.image.length - 1];
-                        imageUrl = imageObj['#text'];
-                    } else {
-                        imageUrl = `https://placehold.co/300x300/1e1e26/ffffff?text=${encodeURIComponent(artistName.charAt(0))}`;
-                    }
-                }
+                imageUrl = `https://placehold.co/300x300/1e1e26/ffffff?text=${encodeURIComponent(artistName.charAt(0))}`;
             }
             
             const card = document.createElement('article');
             card.className = 'card';
             card.innerHTML = `
-                <img src="${imageUrl}" alt="Art" class="card-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
+                <img src="${imageUrl}" alt="Art" class="card-img" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
                 <div class="card-content">
                     <h3 class="card-title">${trackName}</h3>
                     <div class="card-subtitle">${artistName}</div>
