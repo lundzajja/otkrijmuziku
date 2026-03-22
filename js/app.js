@@ -30,6 +30,29 @@ async function getLastfmAlbumCover(artist, album) {
     }
 }
 
+async function getLastfmTrackCover(artist, track) {
+    const key = track.toLowerCase().trim();
+    if (ARTWORK_OVERRIDES[key]) return ARTWORK_OVERRIDES[key];
+
+    const endpoint = `https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=${API_KEY}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(track)}&format=json`;
+    try {
+        const resp = await fetch(endpoint, {cache: 'force-cache'});
+        if (!resp.ok) return null;
+
+        const data = await resp.json();
+        if (!data || !data.track || !data.track.album || !data.track.album.image) return null;
+
+        const imageObj = data.track.album.image.find(img => img.size === 'extralarge') || data.track.album.image[data.track.album.image.length - 1];
+        if (imageObj && imageObj['#text']) {
+            return imageObj['#text'];
+        }
+        return null;
+    } catch (error) {
+        console.warn('Last.fm fetch track artwork failed for', artist, track, error);
+        return null;
+    }
+}
+
 // Initialize Application
 function initMainContent() {
     const header = document.querySelector('.navbar');
@@ -363,8 +386,8 @@ async function fetchLastfmTopTracks(user, container) {
 
         container.innerHTML = '';
         
-        for (let index = 0; index < tracks.length; index++) {
-            const track = tracks[index];
+        // Paralelno učitavanje svih cover slika
+        const trackPromises = tracks.map(async (track, index) => {
             const trackName = track.name;
             const artistName = track.artist.name;
             const playcount = track.playcount;
@@ -373,17 +396,25 @@ async function fetchLastfmTopTracks(user, container) {
             
             if (ARTWORK_OVERRIDES[trackName.toLowerCase()]) {
                 imageUrl = ARTWORK_OVERRIDES[trackName.toLowerCase()];
-            } else if (track.image && track.image.length > 0) {
-                const imageObj = track.image.find(img => img.size === 'extralarge') || track.image[track.image.length - 1];
-                imageUrl = imageObj['#text'] || '';
             } else {
-                imageUrl = `https://placehold.co/300x300/1e1e26/ffffff?text=${encodeURIComponent(artistName.charAt(0))}`;
+                const fetchedCover = await getLastfmTrackCover(artistName, trackName);
+                if (fetchedCover) {
+                    imageUrl = fetchedCover;
+                } else if (track.image && track.image.length > 0) {
+                    const imageObj = track.image.find(img => img.size === 'extralarge') || track.image[track.image.length - 1];
+                    imageUrl = imageObj['#text'] || '';
+                }
             }
             
+            // Fallback ako nema slike
+            if (!imageUrl) {
+                imageUrl = `https://placehold.co/300x300/1e1e26/ffffff?text=${encodeURIComponent(artistName.charAt(0))}`;
+            }
+
             const card = document.createElement('article');
             card.className = 'card';
             card.innerHTML = `
-                <img src="${imageUrl}" alt="Art" class="card-img" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
+                <img src="${imageUrl}" alt="${trackName}" class="card-img" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
                 <div class="card-content">
                     <h3 class="card-title">${trackName}</h3>
                     <div class="card-subtitle">${artistName}</div>
@@ -394,8 +425,13 @@ async function fetchLastfmTopTracks(user, container) {
                     </div>
                 </div>
             `;
-            container.appendChild(card);
-        }
+            return card;
+        });
+
+        // Čekamo sve Promise-e i dodajemo kartice u DOM
+        const cards = await Promise.all(trackPromises);
+        cards.forEach(card => container.appendChild(card));
+
     } catch (error) {
         console.error('Last.fm Top Tracks Error:', error);
         container.innerHTML = `<div class="error-state">${error.message}</div>`;
