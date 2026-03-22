@@ -7,6 +7,29 @@ const ARTWORK_OVERRIDES = {
     'oil of every pearl\'s un-insides': 'https://lastfm.freetls.fastly.net/i/u/300x300/b482e95ee228abbaaccd0d5a31b81ad2.jpg' // Sophie Lastfm cover
 };
 
+async function getLastfmAlbumCover(artist, album) {
+    const key = album.toLowerCase().trim();
+    if (ARTWORK_OVERRIDES[key]) return ARTWORK_OVERRIDES[key];
+
+    const endpoint = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${API_KEY}&artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}&format=json`;
+    try {
+        const resp = await fetch(endpoint, {cache: 'force-cache'});
+        if (!resp.ok) return null;
+
+        const data = await resp.json();
+        if (!data || !data.album || !data.album.image) return null;
+
+        const imageObj = data.album.image.find(img => img.size === 'extralarge') || data.album.image[data.album.image.length - 1];
+        if (imageObj && imageObj['#text']) {
+            return imageObj['#text'];
+        }
+        return null;
+    } catch (error) {
+        console.warn('Last.fm fetch artwork failed for', artist, album, error);
+        return null;
+    }
+}
+
 // Initialize Application
 function initMainContent() {
     const header = document.querySelector('.navbar');
@@ -73,6 +96,9 @@ async function loadMusicboardReviews(container) {
 
             if (ARTWORK_OVERRIDES[review.album.toLowerCase()]) {
                 coverUrl = ARTWORK_OVERRIDES[review.album.toLowerCase()];
+            } else {
+                const dynamicCover = await getLastfmAlbumCover(review.artist, review.album);
+                if (dynamicCover) coverUrl = dynamicCover;
             }
 
             const card = document.createElement('article');
