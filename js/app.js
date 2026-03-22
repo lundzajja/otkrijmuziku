@@ -148,7 +148,7 @@ async function loadMusicboardReviews(container) {
 
 async function loadGenres(container) {
     try {
-        const response = await fetch('./data/genres.json', { cache: 'force-cache' });
+        const response = await fetch('./data/genres.json?v=' + new Date().getTime());
         if (!response.ok) throw new Error('Neuspelo učitavanje žanrova');
         const genres = await response.json();
         
@@ -182,7 +182,7 @@ async function loadGenreDetails(container) {
     }
 
     try {
-        const response = await fetch('./data/genres.json', { cache: 'force-cache' });
+        const response = await fetch('./data/genres.json?v=' + new Date().getTime());
         const genres = await response.json();
         const genre = genres.find(g => g.slug === genreId);
 
@@ -245,7 +245,7 @@ async function loadGenreDetails(container) {
         if (genre.tribute && genre.tribute.active) {
             html += `
                 <div class="tribute-box">
-                    <h2>🤍 Tribute to SOPHIE</h2>
+                    <h2>🤍 Tribute</h2>
                     <p>${genre.tribute.text}</p>
                 </div>
             `;
