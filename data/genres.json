@@ -38,14 +38,17 @@
     "name": "Alternativni Rok",
     "description": "Podžanr rok muzike koji je nastao u nezavisnom muzičkom podzemlju tokom 1980-ih.",
     "color": "#1db954",
-    "history": "Odbacivši komercijalizam mejnstrim roka 80-ih, bendovi su počeli sa sirovijim, distorziranim i melanholičnim zvukom. Ultimativni bum doživeo je početkom 90-ih kroz Grunge pokret u Sijetlu.",
-    "creators": "Nastao trudom nezavisnih bendova underground scene (Pixies, Sonic Youth), a omasovljen generacijom bendova kao što je Nirvana.",
+    "history": "Alternativni rok je nastao tokom 1980-ih godina u Sjedinjenim Američkim Državama i Velikoj Britaniji, kao odgovor na preovlađujuće komercijalne tokove popularnog roka. Mladi muzičari iz podzemnih scena tražili su način da izraze frustraciju i autentična osećanja koja nisu nalazila svoje mesto u zvaničnoj muzičkoj industriji. Inspirisani punk energijom, indie estetikom i eksperimentalnim zvukom, bendovi su počeli da kombinuju distorzirane gitare, introspektivne tekstove i sirovu produkciju.\n\nPočetkom 1990-ih, ovaj žanr je doživeo eksploziju popularnosti, najviše zahvaljujući grunge sceni iz Seattle. Presudan trenutak bio je izlazak albuma Nevermind grupe Nirvana 1991. godine. Pesme poput „Smells Like Teen Spirit" postale su himne generacije koja se osećala otuđeno i neshvaćeno. Album je neočekivano postao globalni fenomen, srušivši barijere između alternativne i mainstream muzike.\n\nNevermind nije samo doneo slavu Nirvani, već je otvorio vrata i drugim bendovima poput Pearl Jam, Soundgarden i Alice in Chains, učvrstivši alternativni rok kao dominantnu snagu devedesetih. Ova kultura, rođena iz osećaja marginalizacije i potrebe za autentičnim glasom, oblikovala je muzičku scenu širom sveta i inspirisala nove generacije da pronađu svoj izraz van komercijalnih okvira.",
+    "creators": "Bendovi iz Seattle grunge scene: Nirvana, Pearl Jam, Soundgarden, Alice in Chains, kao i britanski pioniri iz indie scene.",
     "iconicAlbum": {
       "title": "Nevermind",
       "artist": "Nirvana",
       "coverUrl": "https://placehold.co/400x400/1db954/ffffff?text=NEVERMIND"
     },
-    "tribute": { "active": false }
+    "tribute": {
+      "active": true,
+      "text": "Večna zahvalnost i uspomena na <b>Kurt Cobain</b>-a, mitsku figuru koja je definisala alternativni rok i inspirisala milione. Njegov autentičan glas, neuporediv talent i emociona dubina ostaju zauvek vitalni u srcu žanra. Kurt je otvorio putanju generaciji da bude autentična, vulnerable i true sebi, čak i kada je to bilo suprotno svemu oko nas. Njegov nasleđ živi u svakoj razdirućoj gitari i introspektivnoj pesmi Alternative-a - zauvek legenda, zauvek izmenjeni lik muzike."
+    }
   },
   {
     "id": 4,
