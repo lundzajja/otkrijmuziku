@@ -5,7 +5,7 @@
     "artist": "Charli XCX",
     "rating": 5,
     "review": "THATS MY JAM. This is my go to album. I luuuuv it so much. The whole concept of it is sooooooo good. I think this is one of the best albums of all time.",
-    "coverUrl": "https://placehold.co/400x400/81c784/ffffff?text=BRAT",
+    "coverUrl": "./pics/brat.png",
     "source": "Musicboard"
   },
   {
@@ -23,7 +23,7 @@
     "artist": "Tyler, The Creator",
     "rating": 5,
     "review": "One of a kind.",
-    "coverUrl": "https://placehold.co/400x400/f8bbd0/000000?text=IGOR",
+    "coverUrl": "./pics/igor.jpg",
     "source": "Musicboard"
   },
   {
@@ -32,7 +32,7 @@
     "artist": "Charli XCX",
     "rating": 5,
     "review": "The beginning. This album basically introduced me to Charli xcx and her world of music. I was listening to her before of course, but not in this way. After this album, I started listening to her music more frequently and exploring her work. Then I found scrapped album XCX World, searched lore behind it. I am hoping she will release XCX World to the public soon.",
-    "coverUrl": "https://placehold.co/400x400/1565c0/ffffff?text=CRASH",
+    "coverUrl": "./pics/crash.webp",
     "source": "Musicboard"
   },
   {
@@ -41,7 +41,7 @@
     "artist": "Kali Uchis",
     "rating": 5,
     "review": "UGHHHHHHH. When I played this album for the first time, I remember I was like: \"OH WTH LADYYYY\". This album is most streamed album on my last.fm. With a reason. Every time I would listen to this album, I would transcendence into another dimension. I love this album and I thank him for saving me in so many different occasions",
-    "coverUrl": "https://placehold.co/400x400/9c27b0/ffffff?text=SIN+MIEDO",
+    "coverUrl": "./pics/sinmiedo.png",
     "source": "Musicboard"
   },
   {
@@ -50,7 +50,7 @@
     "artist": "The Weeknd",
     "rating": 5,
     "review": "This album was my introduction to the discography of The Weeknd and at that time I was highly influenced by RnB, soul, flamenco type of genre. This album is such a classic and I love every second of it (except interludes but they are there to show the full image of the trilogy (After Hours, Dawn FM and Hurry Up Tomorrow)).",
-    "coverUrl": "https://placehold.co/400x400/1976d2/ffffff?text=DAWN+FM",
+    "coverUrl": "./pics/dawnfm.webp",
     "source": "Musicboard"
   }
 ]

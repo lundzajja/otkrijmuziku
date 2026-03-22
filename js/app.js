@@ -115,14 +115,7 @@ async function loadMusicboardReviews(container) {
         container.innerHTML = '';
         
         for (const review of reviews) {
-            let coverUrl = review.coverUrl;
-
-            if (ARTWORK_OVERRIDES[review.album.toLowerCase()]) {
-                coverUrl = ARTWORK_OVERRIDES[review.album.toLowerCase()];
-            } else {
-                const dynamicCover = await getLastfmAlbumCover(review.artist, review.album);
-                if (dynamicCover) coverUrl = dynamicCover;
-            }
+            const coverUrl = review.coverUrl;
 
             const card = document.createElement('article');
             card.className = 'card';
