@@ -134,7 +134,7 @@ async function loadMusicboardReviews(container) {
                     <p class="card-desc">"${review.review}"</p>
                     <div class="card-rating" style="display: flex; justify-content: space-between; margin-top: auto;">
                         <span style="color: #ffaa00; font-weight: bold;">Ocena: ${review.rating} / 5</span>
-                        <span style="color: var(--text-secondary); font-size: 0.8rem;">Povučeno sa Musicboarda</span>
+                        <span style="color: var(--text-secondary); font-size: 0.8rem;">musicboard</span>
                     </div>
                 </div>
             `;
