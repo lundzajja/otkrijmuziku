@@ -138,6 +138,30 @@ a {
     color: var(--primary);
 }
 
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010;
+}
+
+.hamburger span {
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--text-primary);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -204,6 +228,32 @@ a {
     bottom: 20%;
     right: 20%;
     opacity: 0.4;
+}
+
+/* Centered Link */
+.centered-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    border: 2px solid var(--primary);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    justify-content: center;
+    width: max-content;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.centered-link:hover {
+    background-color: var(--primary);
+    color: var(--bg-dark);
+    transform: translate(-50%, -2px);
+    box-shadow: 0 5px 15px rgba(137, 204, 4, 0.3);
 }
 
 /* Sections */
@@ -445,7 +495,37 @@ a {
     .hero-actions {
         flex-direction: column;
     }
+    .hamburger {
+        display: flex;
+    }
     .nav-links {
-        display: none; /* Just a simple styling choice for now */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(15, 15, 19, 0.98);
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        transition: left 0.3s ease;
+        z-index: 1005;
+    }
+    .nav-links.active {
+        left: 0;
+    }
+    .nav-links a {
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+    }
+    .hamburger.active span:first-child {
+        transform: rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg);
     }
 }

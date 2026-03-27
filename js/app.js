@@ -104,13 +104,33 @@ function scheduleDeferredLoad() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', scheduleDeferredLoad);
+document.addEventListener('DOMContentLoaded', () => {
+    scheduleDeferredLoad();
+    
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+});
 
 async function loadMusicboardReviews(container) {
     container.innerHTML = `<div class="loading-state">Povlačenje Musicboard recenzija i Last.fm omota albuma za korisnika @${MUSICBOARD_USERNAME}...</div>`;
     try {
         await new Promise(resolve => setTimeout(resolve, 300));
-        const response = await fetch('./data/musicboard_reviews.json?v=' + Math.random());
+        const response = await fetch('./data/reviews.json?v=' + Math.random());
         if (!response.ok) throw new Error('Neuspelo povlačenje Musicboard podataka');
         const reviews = await response.json();
         
@@ -128,8 +148,8 @@ async function loadMusicboardReviews(container) {
                     <div class="card-subtitle">${review.artist}</div>
                     <p class="card-desc">"${review.review}"</p>
                     <div class="card-rating" style="display: flex; justify-content: space-between; margin-top: auto;">
-                        <span style="color: #ffaa00; font-weight: bold;">Ocena: ${review.rating} / 5</span>
-                        <span style="color: var(--text-secondary); font-size: 0.8rem;">musicboard</span>
+                        <span style="color: #ffaa00; font-weight: bold; font-size: 1.2rem;">${'★'.repeat(review.rating)}${'☆'.repeat(5 - Math.floor(review.rating))}</span>
+                        <span style="color: var(--text-secondary); font-size: 0.8rem;">${review.source}</span>
                     </div>
                 </div>
             `;

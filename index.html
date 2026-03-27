@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="otkrij Zvuk - Saznajte sve o muzici, pročitajte recenzije, otkrijte žanrove i pratite šta slušam na Last.fm.">
     <title>otkrij Zvuk | Početna</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +19,11 @@
     <header class="navbar">
         <div class="container nav-content">
             <a href="index.html" class="logo">otkrij <span>Zvuk</span></a>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="nav-links">
                 <a href="#pocetna">Početna</a>
                 <a href="#moja-prica">Moja priča</a>
@@ -63,7 +69,7 @@
                 <div class="reviews-grid" id="reviewsContainer">
                     <div class="loading-state">Učitavanje recenzija...</div>
                 </div>
-                <a href="#recenzije" class="centered-link">Više recenzija &rarr;</a>
+                <a href="reviews.html" class="centered-link">Više recenzija &rarr;</a>
             </div>
         </section>
 
@@ -73,7 +79,7 @@
                 <div class="genres-grid" id="genresContainer">
                     <div class="loading-state">Učitavanje žanrova...</div>
                 </div>
-                <a href="#zanrovi" class="centered-link">Svi žanrovi &rarr;</a>
+                <a href="genres.html" class="centered-link">Svi žanrovi &rarr;</a>
             </div>
         </section>
 
@@ -115,7 +121,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="./pics/amy.jpg" alt="Amy Winehouse" class="card-img" loading="lazy">
+                        <img src="./pics/amy.jpg" alt="Amy Winehouse" class="card-img" loading="lazy" style="object-position: top;">
                         <div class="card-content">
                             <h3 class="card-title">Amy Winehouse</h3>
                             <div class="card-subtitle">Ikona pop muzike</div>
@@ -123,7 +129,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="./pics/marina.jpg" alt="Marina Tucaković" class="card-img" loading="lazy">
+                        <img src="./pics/marina.jpg" alt="Marina Tucaković" class="card-img" loading="lazy" style="object-position: top;">
                         <div class="card-content">
                             <h3 class="card-title">Marina Tucaković</h3>
                             <div class="card-subtitle">Tekstopisac</div>
@@ -160,7 +166,7 @@
                     <div class="loading-state">Učitavanje top pesama...</div>
                 </div>
 
-                <a href="#lastfm" class="centered-link">last.fm profil &rarr;</a>
+                <a href="lastfm.html" class="centered-link">last.fm profil &rarr;</a>
             </div>
         </section>
     </main>
@@ -168,11 +174,11 @@
     <footer class="footer">
         <div class="container footer-content">
             <p>&copy; 2026 otkrij Zvuk. Veb Projekat 2.</p>
-            <p>Powerd by <a href="https://www.last.fm" target="_blank">last.fm API</a></p>
+            <p>Powered by <a href="https://www.last.fm" target="_blank">last.fm API</a></p>
         </div>
     </footer>
 
-    <link rel="preload" as="script" href="./js/app.js?v=2">
+
     <script src="./js/app.js?v=2" defer></script>
 </body>
 </html>
