@@ -259,6 +259,7 @@ a {
 /* Sections */
 .section {
     padding: 3rem 0;
+    scroll-margin-top: 90px;
 }
 
 .section-alt {
