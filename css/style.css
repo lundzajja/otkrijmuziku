@@ -1,20 +1,20 @@
 :root {
-    --bg-dark: #0f0f13;
-    --surface: #1e1e26;
-    --surface-hover: #2a2a35;
+    --bg-dark: #000000;
+    --surface: #0a0a0a;
+    --surface-hover: #141414;
     --primary: #89CC04;
-    --secondary: #4b77ff;
-    --third: #1db954;
+    --secondary: #2E8B57; /* darker matrix green */
+    --third: #0a0a0a;
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
-    --border: #333340;
+    --border: #222222;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Mono', monospace;
 }
 
 body {
@@ -32,6 +32,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4 {
+    font-family: 'Inter', sans-serif;
     font-weight: 800;
     line-height: 1.2;
 }
@@ -68,32 +69,39 @@ a {
 .btn {
     display: inline-block;
     padding: 1rem 2rem;
-    border-radius: 4px; /* Slightly rounded edges instead of fully pill-shape for modern solid look */
+    border-radius: 0; /* Sharp edges for terminal look */
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--primary);
     font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(137,204,4,0.4);
+    background-color: var(--primary);
+    color: var(--bg-dark);
 }
 
 .btn-primary {
-    background-color: var(--primary);
-    color: #fff;
+    background-color: transparent;
+    color: var(--primary);
 }
 
 .btn-secondary {
-    background-color: var(--surface);
-    color: #fff;
+    background-color: transparent;
+    color: var(--text-primary);
     border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
-    border-color: var(--secondary);
+    border-color: var(--text-primary);
+    background-color: transparent;
+    color: var(--text-primary);
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
 
 .btn-sm {
@@ -170,6 +178,12 @@ a {
     position: relative;
     padding-top: 80px;
     overflow: hidden;
+    background-color: var(--bg-dark);
+    background-image: 
+        linear-gradient(rgba(137, 204, 4, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(137, 204, 4, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
 }
 
 .hero-content {
@@ -196,38 +210,27 @@ a {
     gap: 1.5rem;
 }
 
-/* Solid Shapes Decoration */
+/* Matrix Equalizer Shapes Decoration */
 .shape {
     position: absolute;
-    border-radius: 50%;
+    bottom: 0;
+    width: 60px;
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 15px rgba(137, 204, 4, 0.3), inset 0 0 15px rgba(137, 204, 4, 0.1);
     z-index: 1;
-    opacity: 0.6;
-    filter: blur(80px); /* Creates a glowing solid color effect without a gradient */
+    opacity: 0.3;
+    animation: equalizer 1s infinite alternate ease-in-out;
+    transform-origin: bottom;
 }
 
-.shape-1 {
-    width: 400px;
-    height: 400px;
-    background-color: var(--primary);
-    top: 10%;
-    right: -10%;
-}
+.shape-1 { left: 15%; height: 300px; animation-duration: 0.8s; animation-delay: 0.1s;}
+.shape-2 { left: 45%; height: 500px; animation-duration: 1.2s; animation-delay: 0.5s; }
+.shape-3 { left: 75%; height: 250px; animation-duration: 0.9s; animation-delay: 0.2s;}
 
-.shape-2 {
-    width: 300px;
-    height: 300px;
-    background-color: var(--secondary);
-    bottom: -10%;
-    left: -5%;
-}
-
-.shape-3 {
-    width: 250px;
-    height: 250px;
-    background-color: var(--third);
-    bottom: 20%;
-    right: 20%;
-    opacity: 0.4;
+@keyframes equalizer {
+    0% { transform: scaleY(0.4); }
+    100% { transform: scaleY(1.1); }
 }
 
 /* Centered Link */
@@ -239,21 +242,23 @@ a {
     font-weight: 600;
     color: var(--primary);
     text-decoration: none;
-    border: 2px solid var(--primary);
-    border-radius: 30px;
+    border: 1px solid var(--primary);
+    border-radius: 0;
     transition: all 0.3s ease;
     justify-content: center;
     width: max-content;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .centered-link:hover {
     background-color: var(--primary);
     color: var(--bg-dark);
     transform: translate(-50%, -2px);
-    box-shadow: 0 5px 15px rgba(137, 204, 4, 0.3);
+    box-shadow: 0 0 15px rgba(137, 204, 4, 0.4);
 }
 
 /* Sections */
@@ -290,9 +295,9 @@ a {
 /* Cards */
 .card {
     background-color: var(--surface);
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border);
     display: flex;
     flex-direction: column;
@@ -302,6 +307,7 @@ a {
     transform: translateY(-8px);
     background-color: var(--surface-hover);
     border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(137,204,4,0.15);
 }
 
 .card-img {
@@ -401,13 +407,14 @@ a {
     border: 1px solid var(--border);
     color: var(--text-primary);
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: 0;
     font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .username-picker input:focus {
     border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(137,204,4,0.2);
 }
 
 .track-item {
@@ -415,20 +422,21 @@ a {
     align-items: center;
     background-color: var(--surface);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 0;
     border: 1px solid var(--border);
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-left-color 0.2s ease;
 }
 
 .track-item:hover {
     background-color: var(--surface-hover);
     border-left: 4px solid var(--primary);
+    transform: translateX(4px);
 }
 
 .track-img {
     width: 60px;
     height: 60px;
-    border-radius: 4px;
+    border-radius: 0;
     margin-right: 1rem;
     background-color: #333;
     object-fit: cover;

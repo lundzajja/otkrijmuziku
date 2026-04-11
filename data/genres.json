@@ -64,5 +64,65 @@
       "coverUrl": "https://placehold.co/400x400/ffaa00/000000?text=KIND+OF+BLUE"
     },
     "tribute": { "active": false }
+  },
+  {
+    "id": 5,
+    "slug": "pop",
+    "name": "Pop",
+    "description": "Pop muzika nema jedan jasno definisan trenutak nastanka, ona je uvek bila ono što je masama dostupno i prihvatljivo.",
+    "color": "#ff003c",
+    "history": "Moderan pop kakav poznajemo počinje 50-ih u Americi i Britaniji, kada se rok i rol počeo komercijalizovati i uobličavati u kratke, pamtljive pesme sa horom koji se ponavlja. Bitlsi su 1964. promenili sve. Njihov nastup u emisiji Ed Sullivan Show gledalo je oko 73 miliona gledalaca, i ta nedelja je podelila istoriju pop muzike na pre i posle. Majkl Džekson je 1982. sa 'Thriller' postavio standard koji ni danas nije srušen. Madona je isti period koristila da redefiše šta znači biti pop zvezda. Beyoncé je 2016. sa 'Lemonade' dokazala da pop album može biti politički, vizualni i umetnički manifest istovremeno.",
+    "creators": "Bitlsi, Majkl Džekson i Madona su postavili temelje. Moderni vizionari poput Beyoncé, Tejlor Svift i The Weeknd nastavljaju da pomeraju granice šta pop može da bude.",
+    "iconicAlbum": {
+      "title": "Thriller",
+      "artist": "Michael Jackson",
+      "coverUrl": "./pics/Thriller.png"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 6,
+    "slug": "rnb-soul",
+    "name": "R&B / Soul",
+    "description": "R&B i soul nastaju iz afroameričke iskustvene muzike - Gospela, bluza i džeza.",
+    "color": "#8a2be2",
+    "history": "U 50-ima i 60-ima, ti zvukovi su se stopili u nešto novo: emocionalnije, ritmičkije, neposrednije. Ray Charles i Džejms Braun su prvi tapnuli u tradiciju gospel muzike. Aretha Franklin je bila definicija žanra, sa pesmama koje su postale himne prava i sloboda. Marvin Gaye je 1971. sa 'What's Going On' promenio šta soul može da kaže, pomešavši muziku sa društvenim i političkim temama poput rata, siromaštva i zagađenja. Lauryn Hill je spojila R&B, hip hop i soul, donoseći emotivno pripovedanje koje i danas resonira.",
+    "creators": "Ray Charles, Džejms Braun, Aretha Franklin i Sam Cooke. Moderni naslednici su Lauryn Hill, D'Angelo i Erykah Badu.",
+    "iconicAlbum": {
+      "title": "What's Going On",
+      "artist": "Marvin Gaye",
+      "coverUrl": "./pics/whatsgoingon.jpg"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 7,
+    "slug": "punk",
+    "name": "Punk",
+    "description": "Punk se rađa iz besa i potrebe za jednostavnom, brzom i agresivnom muzikom.",
+    "color": "#ff4500",
+    "history": "Sredinom 70-ih, rok muzika je postala prevelika, preskupa i predaleka od ulice. Produkcija je bila glomazna, a prosečan tinejdžer nije imao gde da se nađe. Sex Pistols su 1977. sa 'Never Mind the Bollocks' odgovorili na tu provaliju. The Clash su uzeli taj isti bes i ubrizgali mu politički sadržaj i širinu, spajajući punk sa regeom i ska ritmovima. Ramones su to sve počeli godinu dana ranije u Njujorku držeći se kratkih pesama i brzih akorda. Punk je uticao na sve što je došlo posle, uključujući alternativni rok i grunge.",
+    "creators": "Ramones, Sex Pistols, The Clash. Kasniji naslednici poput Green Daya i Rancida.",
+    "iconicAlbum": {
+      "title": "London Calling",
+      "artist": "The Clash",
+      "coverUrl": "./pics/londoncalling.jpg"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 8,
+    "slug": "country",
+    "name": "Country",
+    "description": "Country ima korene u apalaškim planinskim zajednicama, u folk muzici doseljenika.",
+    "color": "#d2691e",
+    "history": "To su priče o životu, gubitku, domovini i tegobama svakodnevice. Hank Vilijams je 50-ih definisao taj zvuk, sa pesmama kratkim i direktnim. Johnny Cash je uzeo country izvan žanrovskih granica, pevajući o marginalizovanim i ugnjetavanim članovima društva. Dolly Parton je redefinisala žensku poziciju u žanru i njene pesme su postale vanvremenske klasike. Moderni country se pomerio prema pop zvuku, a umetnici prelaze granice i eksperimentišu više nego ikad.",
+    "creators": "Hank Vilijams, Johnny Cash, Dolly Parton. Moderni umetnici poput Kacey Musgraves vraćaju country ka emotivnoj iskrenosti.",
+    "iconicAlbum": {
+      "title": "At Folsom Prison",
+      "artist": "Johnny Cash",
+      "coverUrl": "./pics/atfolsomprison.jpg"
+    },
+    "tribute": { "active": false }
   }
 ]

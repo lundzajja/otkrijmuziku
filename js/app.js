@@ -130,7 +130,7 @@ async function loadMusicboardReviews(container) {
     container.innerHTML = `<div class="loading-state">Povlačenje Musicboard recenzija i Last.fm omota albuma za korisnika @${MUSICBOARD_USERNAME}...</div>`;
     try {
         await new Promise(resolve => setTimeout(resolve, 300));
-        const response = await fetch('./data/reviews.json?v=' + Math.random());
+        const response = await fetch('./data/recenzije.json');
         if (!response.ok) throw new Error('Neuspelo povlačenje Musicboard podataka');
         const reviews = await response.json();
         
