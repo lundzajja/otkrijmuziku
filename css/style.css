@@ -3,7 +3,7 @@
     --surface: #0a0a0a;
     --surface-hover: #141414;
     --primary: #89CC04;
-    --secondary: #2E8B57; /* darker matrix green */
+    --secondary: #2E8B57;
     --third: #0a0a0a;
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
@@ -30,7 +30,6 @@ body {
     padding: 0 2rem;
 }
 
-/* Typography */
 h1, h2, h3, h4 {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
@@ -65,11 +64,10 @@ a {
     transition: color 0.3s ease;
 }
 
-/* Buttons */
 .btn {
     display: inline-block;
     padding: 1rem 2rem;
-    border-radius: 0; /* Sharp edges for terminal look */
+    border-radius: 0;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -109,7 +107,6 @@ a {
     font-size: 0.9rem;
 }
 
-/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -146,7 +143,6 @@ a {
     color: var(--primary);
 }
 
-/* Hamburger Menu Button */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -170,7 +166,6 @@ a {
     transform-origin: 1px;
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -214,7 +209,6 @@ a {
     gap: 1.5rem;
 }
 
-/* Matrix Equalizer Shapes Decoration */
 .shape {
     position: absolute;
     bottom: 0;
@@ -237,7 +231,6 @@ a {
     100% { transform: scaleY(1.1); }
 }
 
-/* Centered Link */
 .centered-link {
     display: inline-flex;
     align-items: center;
@@ -265,7 +258,6 @@ a {
     box-shadow: 0 0 15px rgba(137, 204, 4, 0.4);
 }
 
-/* Sections */
 .section {
     padding: 3rem 0;
     scroll-margin-top: 90px;
@@ -277,7 +269,6 @@ a {
     border-bottom: 1px solid var(--border);
 }
 
-/* Layout Grids */
 .reviews-grid, .genres-grid, .tribute-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -296,7 +287,6 @@ a {
     gap: 1rem;
 }
 
-/* Cards */
 .card {
     background-color: var(--surface);
     border-radius: 0;
@@ -318,7 +308,7 @@ a {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
-    background-color: #333; /* Placeholder for solid color */
+    background-color: #333;
 }
 
 .card-content {
@@ -350,11 +340,10 @@ a {
 .card-rating {
     margin-top: auto;
     padding-top: 1rem;
-    color: #ffaa00; /* Star color */
+    color: #ffaa00;
     font-weight: bold;
 }
 
-/* Genre Cards Specific */
 .genre-card {
     padding: 2rem;
     position: relative;
@@ -375,7 +364,6 @@ a {
     z-index: 2;
 }
 
-/* Solid line decoration instead of gradient */
 .genre-decoration {
     position: absolute;
     bottom: 0;
@@ -384,12 +372,12 @@ a {
     height: 6px;
 }
 
-/* Last.fm specific */
 .lastfm-header {
     display: flex;
     flex-direction: column;
     margin-bottom: 3rem;
 }
+
 .lastfm-subtitle {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
@@ -401,11 +389,13 @@ a {
     font-size: 1.1rem;
     line-height: 1.6;
 }
+
 .username-picker {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
+
 .username-picker input {
     background-color: var(--surface);
     border: 1px solid var(--border);
@@ -416,6 +406,7 @@ a {
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .username-picker input:focus {
     border-color: var(--primary);
     box-shadow: 0 0 10px rgba(137,204,4,0.2);
@@ -481,7 +472,6 @@ a {
     border-color: var(--primary);
 }
 
-/* Footer */
 .footer {
     background-color: var(--bg-dark);
     padding: 3rem 0;
@@ -500,7 +490,6 @@ a {
     color: var(--text-secondary);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5rem;
@@ -542,10 +531,6 @@ a {
         transform: rotate(-45deg);
     }
 }
-
-/* ============================================
-   Welcome Overlay
-   ============================================ */
 
 .welcome-overlay {
     position: fixed;

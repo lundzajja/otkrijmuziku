@@ -68,7 +68,6 @@
     var offsetX = (w % SPACING) / 2;
     var offsetY = (h % SPACING) / 2;
 
-    // Horizontalne linije — segment po segment da boja varira
     for (var row = 0; row < rows; row++) {
       var gy = offsetY + row * SPACING;
       for (var col = 0; col < cols - 1; col++) {
@@ -85,7 +84,6 @@
       }
     }
 
-    // Vertikalne linije — segment po segment
     for (var col = 0; col < cols; col++) {
       var gx = offsetX + col * SPACING;
       for (var row = 0; row < rows - 1; row++) {

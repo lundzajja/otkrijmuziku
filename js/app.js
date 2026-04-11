@@ -1,10 +1,9 @@
 const API_KEY = '5ed3def25e94c94fdb1ce5bae594ae3e';
 const MUSICBOARD_USERNAME = 'lukamercedez';
 
-// Rucni overrides za artefakte koji nisu dostupni javno
 const ARTWORK_OVERRIDES = {
     'have mercy': 'https://lastfm.freetls.fastly.net/i/u/300x300/d880ae1499f5f7dcd9d525660add7779.jpg',
-    'oil of every pearl\'s un-insides': 'https://lastfm.freetls.fastly.net/i/u/300x300/b482e95ee228abbaaccd0d5a31b81ad2.jpg' // Sophie Lastfm cover
+    'oil of every pearl\'s un-insides': 'https://lastfm.freetls.fastly.net/i/u/300x300/b482e95ee228abbaaccd0d5a31b81ad2.jpg'
 };
 
 async function getLastfmAlbumCover(artist, album) {
@@ -53,7 +52,6 @@ async function getLastfmTrackCover(artist, track) {
     }
 }
 
-// Initialize Application
 async function initMainContent() {
     const hero = document.querySelector('.hero');
     if (hero) hero.classList.add('hero-loaded');
@@ -92,9 +90,7 @@ async function initMainContent() {
         }
     }
 
-    // Čekamo da se kritični delovi za visinu stranice učitaju
     await Promise.all([reviewsPromise, genresPromise, genreDetailsPromise, lastfmPromise]);
-
 }
 
 function scheduleDeferredLoad() {
@@ -107,8 +103,7 @@ function scheduleDeferredLoad() {
 
 document.addEventListener('DOMContentLoaded', () => {
     scheduleDeferredLoad();
-    
-    // Mobile menu toggle
+
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     if (hamburger && navLinks) {
@@ -116,8 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-        
-        // Close menu on link click
+
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -134,9 +128,9 @@ async function loadMusicboardReviews(container) {
         const response = await fetch('./data/recenzije.json');
         if (!response.ok) throw new Error('Neuspelo povlačenje Musicboard podataka');
         const reviews = await response.json();
-        
+
         container.innerHTML = '';
-        
+
         for (const review of reviews) {
             const coverUrl = review.coverUrl;
 
@@ -207,7 +201,6 @@ async function loadGenreDetails(container) {
 
         if (!genre) throw new Error('Žanr nije pronađen');
 
-        // Dynamically fetching Last.fm omot za kultni album
         let coverUrl = genre.iconicAlbum.coverUrl;
         if (ARTWORK_OVERRIDES[genre.iconicAlbum.title.toLowerCase()]) {
             coverUrl = ARTWORK_OVERRIDES[genre.iconicAlbum.title.toLowerCase()];
@@ -231,10 +224,10 @@ async function loadGenreDetails(container) {
                     <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">${genre.description}</p>
                 </div>
             </section>
-            
+
             <div class="container pb-6" style="padding-bottom: 6rem;">
                 <a href="javascript:void(0);" onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html#zanrovi'; return false;" style="color: var(--text-secondary); margin-bottom: 2rem; display: inline-block;">&larr; Nazad</a>
-                
+
                 <div class="genre-info-grid">
                     <div class="info-main">
                         <div class="info-block">
@@ -246,7 +239,7 @@ async function loadGenreDetails(container) {
                             <p>${genre.creators}</p>
                         </div>
                     </div>
-                    
+
                     <div class="info-side">
                         <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Kultni Album</h3>
                         <article class="card">
@@ -309,16 +302,16 @@ async function fetchLastfmRecentTracks(user, container) {
             const trackName = track.name;
             const artistName = track.artist['#text'];
             let imageUrl = '';
-            
+
             if (ARTWORK_OVERRIDES[trackName.toLowerCase()]) {
                 imageUrl = ARTWORK_OVERRIDES[trackName.toLowerCase()];
             } else if (track.image && track.image.length > 0) {
                 const imageObj = track.image.find(img => img.size === 'extralarge') || track.image[track.image.length - 1];
                 imageUrl = imageObj['#text'];
             }
-            
+
             const isNowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
-            const timeDisplay = isNowPlaying ? '<span style="color:var(--primary);font-weight:bold;">Sluša Sada 🎶</span>' : 
+            const timeDisplay = isNowPlaying ? '<span style="color:var(--primary);font-weight:bold;">Sluša Sada 🎶</span>' :
                 (track.date ? track.date['#text'] : 'Nepoznat Datum');
 
             const trackEl = document.createElement('div');
@@ -361,14 +354,14 @@ async function fetchLastfmTopAlbums(user, container) {
             const artistName = album.artist.name;
             const playcount = album.playcount;
             let imageUrl = '';
-            
+
             if (ARTWORK_OVERRIDES[albumName.toLowerCase()]) {
                 imageUrl = ARTWORK_OVERRIDES[albumName.toLowerCase()];
             } else if (album.image && album.image.length > 0) {
                 const imageObj = album.image.find(img => img.size === 'extralarge') || album.image[album.image.length - 1];
                 imageUrl = imageObj['#text'];
             }
-            
+
             const card = document.createElement('article');
             card.className = 'card';
             card.innerHTML = `
@@ -407,15 +400,14 @@ async function fetchLastfmTopTracks(user, container) {
         }
 
         container.innerHTML = '';
-        
-        // Paralelno učitavanje svih cover slika
+
         const trackPromises = tracks.map(async (track, index) => {
             const trackName = track.name;
             const artistName = track.artist.name;
             const playcount = track.playcount;
-            
+
             let imageUrl = '';
-            
+
             if (ARTWORK_OVERRIDES[trackName.toLowerCase()]) {
                 imageUrl = ARTWORK_OVERRIDES[trackName.toLowerCase()];
             } else {
@@ -427,8 +419,7 @@ async function fetchLastfmTopTracks(user, container) {
                     imageUrl = imageObj['#text'] || '';
                 }
             }
-            
-            // Fallback ako nema slike
+
             if (!imageUrl) {
                 imageUrl = `https://placehold.co/300x300/1e1e26/ffffff?text=${encodeURIComponent(artistName.charAt(0))}`;
             }
@@ -450,7 +441,6 @@ async function fetchLastfmTopTracks(user, container) {
             return card;
         });
 
-        // Čekamo sve Promise-e i dodajemo kartice u DOM
         const cards = await Promise.all(trackPromises);
         cards.forEach(card => container.appendChild(card));
 
@@ -481,7 +471,6 @@ async function fetchLastfmTopArtists(user, container) {
             const artistName = artist.name;
             const playcount = artist.playcount;
 
-            // Last.fm ne vraća slike izvođača — koristimo cover top albuma tog izvođača
             let imageUrl = '';
             try {
                 const topAlbumUrl = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${API_KEY}&artist=${encodeURIComponent(artistName)}&format=json&limit=1`;

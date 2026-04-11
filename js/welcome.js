@@ -5,13 +5,12 @@
   var enterBtn = document.getElementById('welcomeEnterBtn');
   if (!overlay || !enterBtn) return;
 
-  // Ako je korisnik već posetio sajt — sakrij overlay bez zvuka
   if (sessionStorage.getItem('otkrijzvuk_visited')) {
     overlay.classList.add('is-hidden');
     return;
   }
 
-  var PLAY_DURATION = 60; // sekundi
+  var PLAY_DURATION = 60;
 
   function startAudio() {
     var audio = new Audio('./a-g-cook-residue.m4a');
@@ -20,7 +19,6 @@
       console.warn('Audio nije mogao da se pusti:', err);
     });
 
-    // Postepeno stišavanje tokom cele pesme
     var startTime = Date.now();
     var ticker = setInterval(function () {
       var elapsed  = (Date.now() - startTime) / 1000;
