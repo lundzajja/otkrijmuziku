@@ -70,18 +70,19 @@ async function initMainContent() {
     const lastfmContainer = document.getElementById('lastfmContainer');
     const lastfmTopAlbumsContainer = document.getElementById('lastfmTopAlbums');
     const lastfmTopTracksContainer = document.getElementById('lastfmTopTracks');
+    const lastfmTopArtistsContainer = document.getElementById('lastfmTopArtists');
     const userBtn = document.getElementById('updateUserBtn');
     const userInput = document.getElementById('lastfmUser');
 
     let lastfmPromise = Promise.resolve();
-    if (lastfmContainer || lastfmTopAlbumsContainer || lastfmTopTracksContainer) {
+    if (lastfmContainer || lastfmTopAlbumsContainer || lastfmTopTracksContainer || lastfmTopArtistsContainer) {
         const defaultUser = userInput ? userInput.value.trim() : 'predragkon';
-        lastfmPromise = fetchAllLastfmData(defaultUser, lastfmContainer, lastfmTopAlbumsContainer, lastfmTopTracksContainer);
+        lastfmPromise = fetchAllLastfmData(defaultUser, lastfmContainer, lastfmTopAlbumsContainer, lastfmTopTracksContainer, lastfmTopArtistsContainer);
 
         if (userBtn && userInput) {
             const updateFn = () => {
                 const newUser = userInput.value.trim();
-                if (newUser) fetchAllLastfmData(newUser, lastfmContainer, lastfmTopAlbumsContainer, lastfmTopTracksContainer);
+                if (newUser) fetchAllLastfmData(newUser, lastfmContainer, lastfmTopAlbumsContainer, lastfmTopTracksContainer, lastfmTopArtistsContainer);
             };
 
             userBtn.addEventListener('click', updateFn);
@@ -166,10 +167,13 @@ async function loadGenres(container) {
         const response = await fetch('./data/genres.json?v=' + new Date().getTime());
         if (!response.ok) throw new Error('Neuspelo učitavanje žanrova');
         const genres = await response.json();
-        
+
+        const isGenresPage = window.location.pathname.includes('genres.html');
+        const genresToShow = isGenresPage ? genres : genres.slice(0, 8);
+
         container.innerHTML = '';
-        genres.forEach(genre => {
-            const card = document.createElement('a'); // Pretvaramo celu karticu u link
+        genresToShow.forEach(genre => {
+            const card = document.createElement('a');
             card.href = `genre.html?id=${genre.slug}`;
             card.className = 'card genre-card';
             card.style.display = 'block';
@@ -275,11 +279,12 @@ async function loadGenreDetails(container) {
     }
 }
 
-async function fetchAllLastfmData(user, containerRecent, containerAlbums, containerTracks) {
+async function fetchAllLastfmData(user, containerRecent, containerAlbums, containerTracks, containerArtists) {
     const promises = [];
     if (containerRecent) promises.push(fetchLastfmRecentTracks(user, containerRecent));
     if (containerAlbums) promises.push(fetchLastfmTopAlbums(user, containerAlbums));
     if (containerTracks) promises.push(fetchLastfmTopTracks(user, containerTracks));
+    if (containerArtists) promises.push(fetchLastfmTopArtists(user, containerArtists));
     await Promise.all(promises);
 }
 
@@ -451,6 +456,69 @@ async function fetchLastfmTopTracks(user, container) {
 
     } catch (error) {
         console.error('Last.fm Top Tracks Error:', error);
+        container.innerHTML = `<div class="error-state">${error.message}</div>`;
+    }
+}
+
+async function fetchLastfmTopArtists(user, container) {
+    container.innerHTML = `<div class="loading-state">Traženje top izvođača...</div>`;
+    const url = `https://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=${encodeURIComponent(user)}&api_key=${API_KEY}&format=json&limit=5`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.error) throw new Error(data.message || 'Greška pri učitavanju top izvođača.');
+
+        const artists = data.topartists.artist;
+        if (!artists || artists.length === 0) {
+            container.innerHTML = `<div class="loading-state">Nema dovoljno podataka.</div>`;
+            return;
+        }
+
+        container.innerHTML = '';
+
+        const artistPromises = artists.map(async (artist, index) => {
+            const artistName = artist.name;
+            const playcount = artist.playcount;
+
+            // Last.fm ne vraća slike izvođača — koristimo cover top albuma tog izvođača
+            let imageUrl = '';
+            try {
+                const topAlbumUrl = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${API_KEY}&artist=${encodeURIComponent(artistName)}&format=json&limit=1`;
+                const albumRes = await fetch(topAlbumUrl);
+                const albumData = await albumRes.json();
+                if (albumData && albumData.topalbums && albumData.topalbums.album && albumData.topalbums.album.length > 0) {
+                    const topAlbum = albumData.topalbums.album[0];
+                    const imgObj = topAlbum.image && (topAlbum.image.find(img => img.size === 'extralarge') || topAlbum.image[topAlbum.image.length - 1]);
+                    if (imgObj && imgObj['#text']) imageUrl = imgObj['#text'];
+                }
+            } catch (ignored) {}
+
+            if (!imageUrl) {
+                imageUrl = `https://placehold.co/300x300/1e1e26/ffffff?text=${encodeURIComponent(artistName.charAt(0))}`;
+            }
+
+            const card = document.createElement('article');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="${artistName}" class="card-img" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='"/>
+                <div class="card-content">
+                    <h3 class="card-title">${artistName}</h3>
+                    <p class="card-desc" style="color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">#${index + 1} Najslušaniji</p>
+                    <div class="card-rating" style="display: flex; justify-content: space-between; margin-top: auto;">
+                        <span style="color: var(--text-primary); font-weight: bold;">Slušanja: ${playcount}</span>
+                        <a href="${artist.url}" target="_blank" style="color:var(--text-secondary); text-decoration: underline;"><small>Last.fm</small></a>
+                    </div>
+                </div>
+            `;
+            return card;
+        });
+
+        const cards = await Promise.all(artistPromises);
+        cards.forEach(card => container.appendChild(card));
+
+    } catch (error) {
+        console.error('Last.fm Top Artists Error:', error);
         container.innerHTML = `<div class="error-state">${error.message}</div>`;
     }
 }

@@ -82,7 +82,7 @@
     "name": "R&B / Soul",
     "description": "R&B i soul nastaju iz afroameričke iskustvene muzike. Gospela, bluza i džeza.",
     "color": "#8a2be2",
-    "history": "U 50-ima i 60-ima, ti zvukovi su se stopili u nešto novo: emocionalnije, ritmičkije, neposrednije. Ray Charles i Džejms Braun su prvi tapnuli u tradiciju gospel muzike. Aretha Franklin je bila definicija žanra, sa pesmama koje su postale himne prava i sloboda. Marvin Gaye je 1971. sa 'What's Going On' promenio šta soul može da kaže, pomešavši muziku sa društvenim i političkim temama poput rata, siromaštva i zagađenja. Lauryn Hill je spojila R&B, hip hop i soul, donoseći emotivno pripovedanje koje i danas resonira.",
+    "history": "R&B i soul nastaju iz afroameričke iskustvene muzike. Gospela, bluza i džeza. U 50-ima i 60-ima, ti zvukovi su se stopili u nešto novo: emocionalnije, ritmičkije, neposrednije.\n\nRay Charles i Džejms Braun su prvi tapnuli u tradiciju gospel muzike i dali novi glas ljudima koji su se borili za svoja prava. Pozajmili su ritmove, vokalne stilove i emotivni naboj crkvene muzike i transformisali ritmičan bluz u soul.\n\nAretha Franklin je bila definicija žanra. Sa 112 pesama na Billboard listi, uključujući 17 u top 10, njena verzija Respect iz 1967. postala je himna. Bila je i prva žena uvedena u Rock and Roll Hall of Fame. Njen glas nije bio samo instrument, bio je argument.\n\nMarvin Gaye je 1971. sa What's Going On promenio šta soul može da kaže. Album je govorio o Vijetnamu, siromaštvu i zagađenju. Bio je toliko kontroverzan da je Motown oklevao da ga objavi. Gaye je insistirao. Prodao je dva miliona kopija za mesec dana.\n\nLauryn Hill je sa The Miseducation of Lauryn Hill besprekorno spojila R&B, hip hop i soul. Album iz 1998. postavio je temelj neo-soul pokreta: povratak ka živoj instrumentaciji i emotivnom pripovedanju, ali sa hip hop produkcijom ispod. Danas, umetnici poput SZA, Frank Oceana i Summer Walker nastavljaju tu tradiciju.",
     "creators": "Ray Charles, Džejms Braun, Aretha Franklin i Sam Cooke. Moderni naslednici su Lauryn Hill, D'Angelo i Erykah Badu.",
     "iconicAlbum": {
       "title": "What's Going On",
@@ -118,6 +118,186 @@
       "title": "At Folsom Prison",
       "artist": "Johnny Cash",
       "coverUrl": "./pics/atfolsomprison.jpg"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 9,
+    "slug": "metal",
+    "name": "Metal",
+    "description": "Metal počinje tamo gde rok prestaje da bude dovoljno glasan — tamniji, sporiji, teži od svega pre njega.",
+    "color": "#888888",
+    "history": "Metal počinje tamo gde rok prestaje da bude dovoljno glasan. Krajem 60-ih, Black Sabbath iz Birmingema su uzeli blues i okrenuli ga naopako. Sporiji, tamniji, teži. Gitarista Tony Iommi je izgubio vrhove prstiju u fabrici i zbog toga je spustio štimovanje gitare, što je slučajno stvorilo zvuk koji je definisao žanr.\n\nParanoid (1970) je album koji je postavio temelje. Naslovna pesma, Iron Man, War Pigs. Tekstovi su govorili o ratu, okultizmu i paranoji u vreme kada je mejnstrim rok pevao o ljubavi i slobodi.\n\nMetallica su 80-ih ubrzali sve do granica fizičkog. Master of Puppets (1986) je thrash metal u najpreciznijem obliku. Brzo, kompleksno i bez kompromisa prema radijskom formatu. Album se prodavao bez ijednog singla.\n\nMetal se granao u desetine podžanrova: death metal, black metal, doom, power metal, prog metal. Svaki je uzeo nešto od originala i doveo do ekstrema.",
+    "creators": "Pioniri: Black Sabbath, Led Zeppelin, Judas Priest. Metallica i Iron Maiden su žanr uveli u globalnu arenu.",
+    "iconicAlbum": {
+      "title": "Paranoid",
+      "artist": "Black Sabbath",
+      "coverUrl": "./pics/paranoid.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 10,
+    "slug": "grunge",
+    "name": "Grunge",
+    "description": "Grunge dolazi iz Sijetla i direktan je odgovor na preterano producirani, šminkani rok 80-ih.",
+    "color": "#6b8e5a",
+    "history": "Grunge dolazi iz Sijetla i direktno je odgovor na preterano producirani, šminkani rok 80-ih. Dok su hair metal bendovi nosili kožu i šminku i snimali albume za milione dolara, Nirvana, Pearl Jam i Soundgarden su svirali u malim klubovima i nosili flanelske košulje.\n\nPearl Jam su 1991. sa Ten postavili jedan od stubova žanra. Album je objavljen 27. avgusta 1991, iste godine kao i Nevermind. Pesme Alive, Even Flow i Jeremy su govorile o nasilju, usamljenosti i odrastanju bez zaštite. Do februara 1993. prodaja Ten-a je izjednačila prodaju Nevermind-a u Americi. Album je na kraju sertifikovan 13 puta platinom.\n\nSoundgarden su bili tamniji i tehnički kompleksniji. Chris Cornell je imao jedan od najvećih vokalnih opsega u istoriji roka.\n\nAlice in Chains su u grunge ubrizgali tamu i dependenciju. Pestilence (1992) i Dirt (1992) su bili među najtežim albumima ere.\n\nGrunge je trajao kratko kao dominantna sila. Cobainova smrt 1994. je simbolično označila kraj ere. Ali uticaj je ostao u svemu što je indie rok i alternativa donela u godinama posle.",
+    "creators": "Pioniri: Nirvana, Pearl Jam, Soundgarden, Alice in Chains.",
+    "iconicAlbum": {
+      "title": "Ten",
+      "artist": "Pearl Jam",
+      "coverUrl": "./pics/pearljamten.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 11,
+    "slug": "disco",
+    "name": "Disco",
+    "description": "Disco je muzika slobode — nastaje u njujorškim podzemnim klubovima kao glas zajednica koje nisu imale mesta u mejnstrimu.",
+    "color": "#e8c84a",
+    "history": "Disco je muzika slobode. Nastaje početkom 70-ih u njujorškim podzemnim klubovima, u prostorima koje su pohađali crni, latino i gej Amerikanci koji nisu imali mesta u mejnstrimu. Ritam je bio konstantan, bas je bio dubok, a ples je bio centar svega.\n\nDonna Summer je sa producentom Giorgiem Moroderjem 1977. snimila I Feel Love, pesmu koja je bila toliko ispred vremena da je Brian Eno navodno rekao da je ona budućnost popularne muzike. Sintetički, repetitivni bas pod vokalima koji plutaju iznad bila je direktna linija do techna i house muzike.\n\nSaturday Night Fever (1977) je Bee Gees i disco isporučio masovnoj publici. Album je prodao više od 40 miliona kopija i bio je kulturni fenomen.\n\nKrajem 70-ih, backlash je bio brutalan. Disco sucks kampanja kulminirala je uništavanjem disco ploča na baseball stadionu u Čikagu. Iza tog besa bila je homofobija i rasizam, koliko i muzički ukus.\n\nDisco je nestao s radija, ali nije nestao iz muzike. Pretvorio se u house, techno i sve moderne forme plesne muzike.",
+    "creators": "Pioniri: Donna Summer, Bee Gees, Chic. Nile Rodgers iz Chica je kao producent uticao na sve od Madone do Daft Punka i Pharrella.",
+    "iconicAlbum": {
+      "title": "Saturday Night Fever",
+      "artist": "Bee Gees",
+      "coverUrl": "./pics/TheBeeGeesSaturdayNightFever.jpg"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 12,
+    "slug": "funk",
+    "name": "Funk",
+    "description": "Funk je ritam pre svega ostalog — Džejms Braun je žanr praktično izmislio sam, pomerajući fokus sa melodije na groove.",
+    "color": "#ff8c00",
+    "history": "Funk je ritam pre svega ostalog. Džejms Braun je žanr praktično izmislio sam, pomerajući fokus sa melodije na perkusivni, groove-baziran zvuk. Cold Sweat iz 1967. je ta tačka prelaza. Odjednom, bas gitara i bubnjevi su bili važniji od hora i aranžmana.\n\nParliament-Funkadelic, dvojni projekat Georgea Clintona, su uzeli taj zvuk i ubrizgali mu kosmičku, suludu estetiku. Koncerti su bili spektakli sa svemirskim brodovima na sceni. Mothership Connection (1975) je funk manifest, album koji je spajao afrofuturizam sa neodoljivim ritmovima.\n\nSly and the Family Stone su funk otvorili prema psihedeliji i socijalnoj kritici. There's a Riot Goin' On (1971) je mračan, paranoičan i potpuno drugačiji od svega što je funk do tada bio.\n\nFunk se nije povukao, samo je promenio formu. Hip hop ga je uzeo kao sirovi materijal za semplovanje. Danas ga čuješ u produkciji Bruna Marsa, Lizzo i Kendricka Lamara.",
+    "creators": "Pioniri: Džejms Braun, George Clinton, Sly Stone. Prince je funk doveo u 80-e i spojio ga sa pop senzibilitetom.",
+    "iconicAlbum": {
+      "title": "Mothership Connection",
+      "artist": "Parliament",
+      "coverUrl": "./pics/ParliamentMothershipConnection.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 13,
+    "slug": "blues",
+    "name": "Blues",
+    "description": "Blues je koren iz kojeg je izraslo gotovo sve u modernoj popularnoj muzici — priče o bolu, gubitku i preživljavanju.",
+    "color": "#1a6b9e",
+    "history": "Blues je koren iz kojeg je izraslo gotovo sve u modernoj popularnoj muzici. Nastao u dubokom jugu Amerike na prelasku iz 19. u 20. vek, iz afroameričkih radnih pesama, spirituala i usmene tradicije. Priče o bolu, gubitku i preživljavanju.\n\nRobert Johnson je mit i stvarnost u jednoj osobi. Snimio je svega 29 pesama između 1936. i 1937. Njegova muzika je uticala na Erica Claptona, Keitha Richardsa i Jimmyja Pagea.\n\nMuddy Waters je blues preneo iz Misisipija u Čikago i elektrifikovao ga. Električna gitara je promenila dinamiku. Hoochie Coochie Man (1954) je čikaški bluz u najčistijem obliku, i direktna linija do rokenrola.\n\nB.B. King je bio ambasador bluza celom svetu. Njegova gitara Lucille i vibrato tehnika su prepoznatljivi na prvu notu.\n\nBez bluza nema rok i rola, nema soul muzike, nema hip hopa. Sve što danas zvuči emotivno i sirovo ima bluz negde u korenu.",
+    "creators": "Pioniri: Robert Johnson, Muddy Waters, B.B. King, Howlin' Wolf.",
+    "iconicAlbum": {
+      "title": "At Newport 1960",
+      "artist": "Muddy Waters",
+      "coverUrl": "./pics/Muddywatersnewport.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 14,
+    "slug": "reggae",
+    "name": "Reggae",
+    "description": "Reggae dolazi iz Jamajke i nosi rastalfarijansku duhovnost, politički otpor i melanholiju siromašnih kvartova Kingstona.",
+    "color": "#2e8b57",
+    "history": "Reggae dolazi iz Jamajke i nosi u sebi rastalfarijansku duhovnost, politički otpor i melanholiju siromašnih kvartova Kingstona. Offbeat akordi na gitari, lenj ali precizan ritam, i tekstovi koji govore o slobodi, pravdi i identitetu.\n\nBob Marley je bio most između Jamajke i ostatka sveta. Exodus (1977) je album koji je Time magazine proglasio albumom 20. veka. One Love, Three Little Birds, Jamming. Bile su to pesme koje su zvučale kao mir, ali su govorile o borbi.\n\nPeter Tosh je bio politički direktniji i angažovaniji. Burning Spear je nosio dublje istorijske i dijasporske teme.\n\nDub je podzanr koji je reggae okrenuo prema eksperimentu. Producer Lee Scratch Perry je uzimao reggae snimke i dekonstruisao ih u studiju, dodajući eho i reverb dok ritam nije postao gotovo apstraktan. Taj pristup je direktno uticao na elektronsku muziku decenijama kasnije.",
+    "creators": "Pioniri: Bob Marley, Peter Tosh, Burning Spear. Lee Scratch Perry kao producent je bio jednako važan kao i izvođači.",
+    "iconicAlbum": {
+      "title": "Exodus",
+      "artist": "Bob Marley & The Wailers",
+      "coverUrl": "./pics/exodus.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 15,
+    "slug": "indie",
+    "name": "Indie / Alternative",
+    "description": "Indie nije jedan zvuk, to je stav prema produkciji i distribuciji — muzika koja stavlja priču i emociju pre svega.",
+    "color": "#9b59b6",
+    "history": "Indie nije jedan zvuk, to je stav prema produkciji i distribuciji. Počinje 80-ih kao reakcija na korporativni rok. Bendovi koji snimaju za male, nezavisne lejblove, bez pritiska da zvuče kao radio format.\n\nR.E.M. su bili pioniri. Iz Atine u Džordžiji, snimali su albume koji su bili previše čudni za mejnstrim, ali su izgradili lojalni kult. Murmur (1983) je album sa kojim je alternativni rok dobio identitet.\n\nThe Smiths su u Britaniji radili isto. Morrissey je pisao tekstove pune morbidnog humora i usamljenosti dok je Johnny Marr gradio gitarske melodije koje su bile sve samo ne depresivne. The Queen Is Dead (1986) je možda najvažniji britanski album te decenije.\n\nRadiohead su 90-ih uzeli alternativu i razmontirali je. OK Computer (1997) je bio toliko napred od svog vremena da su ga kritičari isprva pogrešno razumeli. Paranoja, tehnološka alijenacija i zvuk koji nije bio ni rok ni elektronika.\n\nIndie danas znači nešto drugačije, često samo estetiku a ne nezavisnost. Ali najzanimljiviji umetnici u prostoru, poput Phoebe Bridgers i Weyes Blood, nose istu logiku: priča i emocija pre svega.",
+    "creators": "Pioniri: R.E.M., The Smiths, Pixies. Radiohead su žanr odveli u eksperiment koji traje i danas.",
+    "iconicAlbum": {
+      "title": "OK Computer",
+      "artist": "Radiohead",
+      "coverUrl": "./pics/Radioheadokcomputer.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 16,
+    "slug": "folk",
+    "name": "Folk",
+    "description": "Folk muzika je uvek bila pripovedanje — priče o životu, radu, gubitku i zajednici, prenošene generacijama.",
+    "color": "#c8a45a",
+    "history": "Folk muzika je uvek bila pripovedanje. Priče o životu, radu, gubitku i zajednici, prenošene usmenim putem generacijama pre nego što su ikad bile snimljene. Američki folk ima korene u britanskim baladama, apalaškoj planinskoj tradiciji i iskustvima radničke klase.\n\nWoody Guthrie je 30-ih i 40-ih folk uzeo kao oružje. This Land Is Your Land (1940) je bila direktna politička izjava, ne samo pesma. Guthrie je putovao sa radnicima tokom Depresije i pisao o onome što je video.\n\nBob Dylan je 60-ih folk pretvorio u poetsku i protestnu formu. The Freewheelin' Bob Dylan (1963) sa Blowin' in the Wind i Masters of War postavio je standard za folk kao protest muziku. Zatim je elektrifikovao gitaru i pola sveta se razbesneo.\n\nJoni Mitchell je folk dovela do emotivne iskrenosti kakvu muzika pre nije poznavala. Blue (1971) zvuči kao čitanje nečijeg dnevnika. Besprekorna kombinacija introspektivnih tekstova, složenih harmonija i gitare.\n\nModerni folk umetnici poput Phoebe Bridgers, Boygenius i Weyes Blood nastavljaju tu tradiciju emotivnog pripovedanja.",
+    "creators": "Pioniri: Woody Guthrie, Pete Seeger, Bob Dylan, Joan Baez. Joni Mitchell je žanr odvela u introspektivne visine.",
+    "iconicAlbum": {
+      "title": "Blue",
+      "artist": "Joni Mitchell",
+      "coverUrl": "./pics/blue.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 17,
+    "slug": "kpop",
+    "name": "K-Pop",
+    "description": "K-pop je globalni fenomen koji spaja precizno trenirane izvođače, vizuelni spektakl i pop produkciju na najvišem nivou.",
+    "color": "#ff69b4",
+    "history": "K-pop se rađa 1992. kada je trio Seo Taiji and Boys u živom TV nastupu spojio hip hop, tehno i rok sa korejskim tekstovima. Publika ih je dočekala sa euforijom. Ta nedelja se danas smatra rodnom datumom modernog K-popa.\n\nIndustrija se brzo organizovala. Lee Soo-man iz SM Entertainmenta razvio je sistem treninga koji je do kraja 90-ih formirao prvu generaciju K-pop idola. H.O.T. i S.E.S. su bili prvi produkti tog sistema i postavili model koji i danas funkcioniše.\n\nPSY je 2012. sa Gangnam Style napravio nešto dotad neviđeno: pesma na korejskom je dostigla milijardu pregleda na YouTube-u. Bio je to prvi takav uspeh u istoriji platforme.\n\nBTS su od 2013. izgradili globalnu fansku armiju poznatu kao ARMY. Njihov EP Love Yourself: Her (2017) debijutovao je na 7. mestu Billboard 200. Love Yourself: Tear (2018) stigao je na broj 1 Billboard 200, prvi put za K-pop. BLACKPINK je 2022. postao prvi azijski akt koji je headlajnirao Coachella.\n\nU 2024. K-pop je proglašen vodećim globalnim žanrom u prodaji prema IFPI. Sedamnaest od dvadeset albuma na IFPI Global Album Sales Chart te godine bili su K-pop albumi.",
+    "creators": "Seo Taiji and Boys su otvorili vrata, a SM, YG i HYBE entertainment sistem je izgradio žanr. BTS i BLACKPINK su ga globalizovali.",
+    "iconicAlbum": {
+      "title": "Love Yourself: Tear",
+      "artist": "BTS",
+      "coverUrl": "./pics/loveysfbts.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 18,
+    "slug": "drumandbass",
+    "name": "Drum and Bass",
+    "description": "Drum and bass nastaje u londonskoj rave sceni — ubrzani breakbeat ritam i teške bas linije kao osnova žanra.",
+    "color": "#00ced1",
+    "history": "Drum and bass nastaje početkom 90-ih u londonskoj rave sceni kao evolucija breakbeat hardkora i džungl muzike. Karakteriše ga ubrzani breakbeat ritam između 160 i 180 BPM i teške bas linije ispod.\n\nJedan snimak je od početka bio svuda: Amen Break, sedmosekundni drum solo grupe The Winstons iz 1969. Taj kratak fragment semplovan je toliko puta da je postao stubac žanra. Producenti su ga usporavali, ubrzavali, sekli na komade i preklapali.\n\nGoldie je 1995. sa albumom Timeless postavio drum and bass na ozbiljniju umetničku mapu. Pesma Inner City Life imala je vokalne sample koji su dali emocionalnu dubinu zvuku koji je do tada bio pre svega fizički. Goldie je suzasnivač Metalheadz lejbla koji je bio centar scene.\n\nRoni Size i kolektiv Reprazent su 1997. sa New Forms pobedili na Mercury Prize, jednoj od najprestižnijih britanskih muzičkih nagrada. Bio je to momenat kada je mejnstrim morao da prizna da drum and bass nije samo rave muzika.\n\nŽanr se granao u desetine podstilova: liquid drum and bass, neurofunk, techstep, jump-up. Danas, Pendulum, Chase & Status i novi val producenata drže scenu živom.",
+    "creators": "Pioniri: Goldie, LTJ Bukem, Roni Size, Andy C. Fabio i Grooverider su kao DJ-evi kroz klub night Rage bili rani katalizatori scene.",
+    "iconicAlbum": {
+      "title": "Timeless",
+      "artist": "Goldie",
+      "coverUrl": "./pics/GoldieTimeless.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 19,
+    "slug": "ambient",
+    "name": "Ambient",
+    "description": "Ambient muzika je deo ambijenta, ne fokus pažnje — zvuk koji se menja ali nikad ne ponavlja tačno isto.",
+    "color": "#4682b4",
+    "history": "Ambient muzika kao definisan žanr počinje sa Brianom Enom, koji je termin kovao sredinom 70-ih. Dok se oporavljao od saobraćajne nesreće, Eno je ležao u krevetu i slušao album harp muzike koji je bio pušten na veoma niskom volumenu. Nije mogao da ustane i pojača ga. Umesto toga, počeo je da sluša kako muzika spliva sa zvukovima kiše napolju. To iskustvo nateralo ga je da razmišlja o muzici kao delu ambijenta, ne kao fokusu pažnje.\n\nAmbient 1: Music for Airports (1978) bio je prvi album koji je eksplicitno nosio oznaku ambient muzike. Eno je konstruisao pesme od tape loopova različitih dužina koji su se ponavljali van faze jedna sa drugom, stvarajući muziku koja se menja ali nikad ne ponavlja tačno isto. Rolling Stone je 2004. album proglasio definicijom ambient žanra, a Pitchfork ga je 2016. proglasio najboljim ambient albumom svih vremena.\n\nAphex Twin je 90-ih ambient doveo do ekstrema. Selected Ambient Works Volume II (1994) napustio je i poslednje tragove melodike i ritma. Ostala je samo tekstura i atmosfera, hladna i introspektivna muzika koja je mogla biti i uznemirujuća i meditativna.\n\nWilliam Basinski je 2002. objavio The Disintegration Loops, snimke starih magnetofonskih traka koje se bukvalno raspadaju tokom snimanja. Album je bio proglašen jednim od najvažnijih muzičkih dela ranog 21. veka.",
+    "creators": "Brian Eno je dao ime žanru. Tangerine Dream i Aphex Twin su ga proširili u različitim pravcima.",
+    "iconicAlbum": {
+      "title": "Ambient 1: Music for Airports",
+      "artist": "Brian Eno",
+      "coverUrl": "./pics/musicfortheairports.webp"
+    },
+    "tribute": { "active": false }
+  },
+  {
+    "id": 20,
+    "slug": "latin",
+    "name": "Latin / Bossa Nova",
+    "description": "Latinska muzika je porodica stilova koji dele ritmičku kompleksnost afroameričke dijasporske tradicije i evropske harmonije.",
+    "color": "#e63946",
+    "history": "Latinska muzika je porodica, ne jedan žanr. Obuhvata salsu, bossa novu, bolero, mambo i cumbu. Svaki od ovih stilova ima posebne korene, ali svi dele ritmičku kompleksnost koja dolazi iz afroameričke dijasporske tradicije i spoja sa evropskim harmonijama.\n\nBossa nova nastaje krajem 50-ih u Riju de Žaneiru. João Gilberto je spojio ritmove sambe sa jazz harmonijama i dobio nešto potpuno novo: smireno, introspektivno, sofisticirano. Njegova pesma Chega de Saudade iz 1958. smatra se prvom bossa nova pesmom.\n\nAntonio Carlos Jobim je bio kompozitor koji je bossa novi dao njen repertoar. The Girl from Ipanema, Desafinado, Corcovado. Jobim je pisao pesme koje su postale jazz standardi slušani širom sveta.\n\nGetz/Gilberto (1964), saradnja između saksofoniste Stana Getza i João Gilberta, pobedila je Grammy za Album of the Year i bossa novu isporučila globalnoj publici. Bila je to retka nagrada za muziku koja nije bila na engleskom.\n\nSalsa nastaje u njujorškim zajednicama kubanskih i portorikanskih emigranata 40-ih i 50-ih. Tito Puente, Celia Cruz i Fania All Stars transformisali su je u pokret. Salsa je bila i muzika i politički identitet.",
+    "creators": "João Gilberto i Antonio Carlos Jobim za bossa novu. Tito Puente i Celia Cruz za salsu. Stan Getz je bossa novu isporučio svetu.",
+    "iconicAlbum": {
+      "title": "Getz/Gilberto",
+      "artist": "Stan Getz & João Gilberto",
+      "coverUrl": "./pics/getz.webp"
     },
     "tribute": { "active": false }
   }
