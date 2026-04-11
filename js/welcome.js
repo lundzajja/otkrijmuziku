@@ -11,42 +11,28 @@
     return;
   }
 
-  var PLAY_DURATION = 60; // sekundi — koliko dugo pesma svira
+  var PLAY_DURATION = 60; // sekundi
 
   function startAudio() {
-    var AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return;
+    var audio = new Audio('./a-g-cook-residue.m4a');
+    audio.volume = 0.18;
+    audio.play().catch(function (err) {
+      console.warn('Audio nije mogao da se pusti:', err);
+    });
 
-    var ctx = new AudioCtx();
-
-    // Učitaj m4a fajl
-    fetch('./a-g-cook-residue.m4a')
-      .then(function (res) { return res.arrayBuffer(); })
-      .then(function (arrayBuffer) { return ctx.decodeAudioData(arrayBuffer); })
-      .then(function (audioBuffer) {
-        var source = ctx.createBufferSource();
-        source.buffer = audioBuffer;
-
-        var gainNode = ctx.createGain();
-        var now      = ctx.currentTime;
-
-        // Počinje blago (0.35), postepeno se stišava tokom cele pesme do tišine
-        gainNode.gain.setValueAtTime(0.18, now);
-        gainNode.gain.linearRampToValueAtTime(0, now + PLAY_DURATION);
-
-        source.connect(gainNode);
-        gainNode.connect(ctx.destination);
-
-        source.start(0);
-        source.stop(now + PLAY_DURATION);
-
-        source.onended = function () {
-          try { ctx.close(); } catch (e) { /* ignore */ }
-        };
-      })
-      .catch(function (err) {
-        console.warn('Audio nije mogao da se učita:', err);
-      });
+    // Postepeno stišavanje tokom cele pesme
+    var startTime = Date.now();
+    var ticker = setInterval(function () {
+      var elapsed  = (Date.now() - startTime) / 1000;
+      var progress = elapsed / PLAY_DURATION;
+      if (progress >= 1) {
+        audio.volume = 0;
+        audio.pause();
+        clearInterval(ticker);
+        return;
+      }
+      audio.volume = 0.18 * (1 - progress);
+    }, 200);
   }
 
   function dismissOverlay() {
