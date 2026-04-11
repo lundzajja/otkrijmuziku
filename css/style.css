@@ -538,3 +538,86 @@ a {
         transform: rotate(-45deg);
     }
 }
+
+/* ============================================
+   Welcome Overlay
+   ============================================ */
+
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: var(--bg-dark);
+    background-image:
+        linear-gradient(rgba(137, 204, 4, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(137, 204, 4, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+    pointer-events: all;
+}
+
+.welcome-overlay.is-hiding {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-overlay.is-hidden {
+    display: none;
+}
+
+.welcome-overlay__inner {
+    max-width: 560px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.welcome-overlay__eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.welcome-overlay__title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.1;
+    margin-bottom: 0;
+    color: var(--text-primary);
+}
+
+.welcome-overlay__title span {
+    color: var(--primary);
+}
+
+.welcome-overlay__subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--text-secondary);
+}
+
+.welcome-overlay__btn {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    animation: overlayBtnPulse 2.5s ease-in-out infinite;
+}
+
+.welcome-overlay__btn:active {
+    animation: none;
+}
+
+@keyframes overlayBtnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(137, 204, 4, 0); }
+    50%       { box-shadow: 0 0 20px 4px rgba(137, 204, 4, 0.35); }
+}

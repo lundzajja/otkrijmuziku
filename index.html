@@ -30,6 +30,18 @@
 </head>
 
 <body>
+    <!-- Welcome Overlay -->
+    <div id="welcomeOverlay" class="welcome-overlay" role="dialog" aria-modal="true" aria-label="Dobrodošlica">
+        <div class="welcome-overlay__inner">
+            <p class="welcome-overlay__eyebrow">— muzički blog —</p>
+            <h1 class="welcome-overlay__title">otkrij <span>Zvuk</span></h1>
+            <p class="welcome-overlay__subtitle">Dobrodošao u svet muzike</p>
+            <button id="welcomeEnterBtn" class="btn btn-primary welcome-overlay__btn">
+                Uđi i slušaj muziku
+            </button>
+        </div>
+    </div>
+
     <header class="navbar">
         <div class="container nav-content">
             <a href="index.html" class="logo">otkrij <span>Zvuk</span></a>
@@ -247,6 +259,7 @@
 
 
     <script src="./js/app.js?v=2" defer></script>
+    <script src="./js/welcome.js" defer></script>
 </body>
 
 </html>
