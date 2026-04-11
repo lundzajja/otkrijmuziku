@@ -9,8 +9,7 @@
     "creators": "Pionirali su ga umetnici poput Kraftwerka pa sve do modernih vizionara kao što su A.G. Cook i umetnici okupljeni oko PC Music lejbla.",
     "iconicAlbum": {
       "title": "Oil of Every Pearl's Un-Insides",
-      "artist": "SOPHIE",
-      "coverUrl": "https://placehold.co/400x400/ff4b4b/ffffff?text=SOPHIE"
+      "artist": "SOPHIE"
     },
     "tribute": {
       "active": true,
@@ -27,8 +26,7 @@
     "creators": "DJ Kool Herc se često navodi kao jedan od osnivača žanra, zajedno sa Grandmaster Flash-om i Afrika Bambaata-om.",
     "iconicAlbum": {
       "title": "Illmatic",
-      "artist": "Nas",
-      "coverUrl": "https://placehold.co/400x400/4b77ff/ffffff?text=ILLMATIC"
+      "artist": "Nas"
     },
     "tribute": { "active": false }
   },
@@ -42,8 +40,7 @@
     "creators": "Bendovi iz Seattle grunge scene: Nirvana, Pearl Jam, Soundgarden, Alice in Chains, kao i britanski pioniri iz indie scene.",
     "iconicAlbum": {
       "title": "Nevermind",
-      "artist": "Nirvana",
-      "coverUrl": "https://placehold.co/400x400/1db954/ffffff?text=NEVERMIND"
+      "artist": "Nirvana"
     },
     "tribute": {
       "active": true,
@@ -60,8 +57,7 @@
     "creators": "Afroameričke zajednice na američkom Jugu. Imena poput Louis Armstrong-a, Miles Davis-a i John Coltrane-a oblikovala su žanr.",
     "iconicAlbum": {
       "title": "Kind of Blue",
-      "artist": "Miles Davis",
-      "coverUrl": "https://placehold.co/400x400/ffaa00/000000?text=KIND+OF+BLUE"
+      "artist": "Miles Davis"
     },
     "tribute": { "active": false }
   },
@@ -84,7 +80,7 @@
     "id": 6,
     "slug": "rnb-soul",
     "name": "R&B / Soul",
-    "description": "R&B i soul nastaju iz afroameričke iskustvene muzike - Gospela, bluza i džeza.",
+    "description": "R&B i soul nastaju iz afroameričke iskustvene muzike. Gospela, bluza i džeza.",
     "color": "#8a2be2",
     "history": "U 50-ima i 60-ima, ti zvukovi su se stopili u nešto novo: emocionalnije, ritmičkije, neposrednije. Ray Charles i Džejms Braun su prvi tapnuli u tradiciju gospel muzike. Aretha Franklin je bila definicija žanra, sa pesmama koje su postale himne prava i sloboda. Marvin Gaye je 1971. sa 'What's Going On' promenio šta soul može da kaže, pomešavši muziku sa društvenim i političkim temama poput rata, siromaštva i zagađenja. Lauryn Hill je spojila R&B, hip hop i soul, donoseći emotivno pripovedanje koje i danas resonira.",
     "creators": "Ray Charles, Džejms Braun, Aretha Franklin i Sam Cooke. Moderni naslednici su Lauryn Hill, D'Angelo i Erykah Badu.",
